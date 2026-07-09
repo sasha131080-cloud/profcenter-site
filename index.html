@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПРОФЦЕНТР | Профессиональное обучение в Абакане</title>
+    <meta name="description" content="Профессиональное обучение в Абакане. Подготовка, переподготовка, повышение квалификации. Лицензия Минобразования. Более 5000 выпускников.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Times New Roman', serif; color: #333; line-height: 1.6; }
+        .header { background: #1a237e; color: white; padding: 30px; text-align: center; }
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .header p { font-size: 16px; opacity: 0.9; }
+        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+        .phone-block { background: #e8eaf6; padding: 20px; border-radius: 8px; text-align: center; font-size: 22px; margin: 20px 0; }
+        .phone-block a { color: #1a237e; text-decoration: none; font-weight: bold; }
+        .info-bar { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
+        .info-item { background: #f5f5f5; padding: 15px 25px; border-radius: 8px; text-align: center; flex: 1; min-width: 200px; }
+        .info-item strong { display: block; font-size: 24px; color: #1a237e; }
+        h2 { color: #1a237e; margin: 30px 0 15px; border-bottom: 2px solid #e8eaf6; padding-bottom: 10px; }
+        .prof-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .prof-item { border: 1px solid #ddd; padding: 15px; border-radius: 8px; background: #fafafa; }
+        .prof-item h3 { color: #1a237e; font-size: 16px; margin-bottom: 5px; }
+        .prof-item .code { color: #666; font-size: 13px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .license-info { background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .news-list { display: grid; gap: 15px; }
+        .news-item { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        .news-item a { color: #1a237e; text-decoration: none; font-weight: bold; }
+        .news-item a:hover { text-decoration: underline; }
+        .news-item small { color: #666; }
+        .footer { background: #1a237e; color: white; padding: 30px; text-align: center; margin-top: 40px; }
+        .footer a { color: #90caf9; }
+        .footer-links { margin-top: 15px; font-size: 14px; }
+        .footer-links a { color: #90caf9; margin: 0 10px; }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>СП «ПРОФЦЕНТР» ООО «КВАНТ+»</h1>
+        <p>Профессиональное обучение в Абакане | Подготовка • Переподготовка • Повышение квалификации</p>
+    </div>
+
+    <div class="container">
+        <div class="phone-block">
+            Бесплатная консультация: <a href="tel:+73902262765">+7 (390) 226-27-65</a>
+            <br><small>г. Абакан, ул. Крылова, 17а корпус 2 | Пн-Пт 09:00-16:00</small>
+        </div>
+
+        <div class="info-bar">
+            <div class="info-item"><strong>5 000+</strong> выпускников</div>
+            <div class="info-item"><strong>15+</strong> профессий</div>
+            <div class="info-item"><strong>с 2014</strong> года работаем</div>
+            <div class="info-item"><strong>12+</strong> лет лицензия</div>
+        </div>
+
+        <div class="license-info">
+            <strong>Образовательная деятельность</strong><br>
+            Обучение осуществляется на основании Лицензии на осуществление образовательной деятельности.<br>
+            <small>Все программы разработаны в соответствии с Приказом Минпросвещения № 534 и профессиональными стандартами.</small>
+        </div>
+
+        <h2>Профессии</h2>
+        <div class="prof-list" id="prof-list">
+            <p>Загрузка...</p>
+        </div>
+
+        <h2>Новости</h2>
+        <div class="news-list" id="news-list">
+            <p>Загрузка...</p>
+        </div>
+
+        <h2>Сведения об образовательной организации</h2>
+        <div class="grid-2">
+            <div>
+                <p><strong>Полное наименование:</strong> СП «ПРОФЦЕНТР» ООО «КВАНТ+»</p>
+                <p><strong>Директор:</strong> Коробкова М.А.</p>
+                <p><strong>Адрес:</strong> г. Абакан, ул. Крылова, 17а корпус 2</p>
+                <p><strong>Телефон:</strong> <a href="tel:+73902262765">+7 (390) 226-27-65</a></p>
+                <p><strong>Email:</strong> kvant.aa@mail.ru</p>
+            </div>
+            <div>
+                <p><strong>Виды обучения:</strong></p>
+                <p>• Профессиональная подготовка (с нуля)</p>
+                <p>• Профессиональная переподготовка</p>
+                <p>• Повышение квалификации</p>
+                <p><strong>Форма обучения:</strong> очно-заочная с применением ДОТ</p>
+                <p><strong>Сроки:</strong> от 40 до 80 академических часов</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>СП «ПРОФЦЕНТР» (ООО «КВАНТ+») | г. Абакан, 2026</p>
+        <p>Тел: <a href="tel:+73902262765">+7 (390) 226-27-65</a> | Email: kvant.aa@mail.ru</p>
+        <div class="footer-links">
+            <a href="legal/privacy.html">Политика конфиденциальности</a>
+            <a href="legal/terms.html">Пользовательское соглашение</a>
+            <a href="legal/information.html">Сведения об организации</a>
+        </div>
+        <p style="margin-top:15px;font-size:12px;opacity:0.7;">
+            Материалы носят информационный характер. При использовании материалов ссылка на источник обязательна.
+            Обработка персональных данных осуществляется в соответствии с ФЗ № 152-ФЗ.
+        </p>
+    </div>
+
+    <script>
+        fetch('professions/list.json').then(r=>r.json()).then(professions=>{
+            document.getElementById('prof-list').innerHTML = professions.map(p =>
+                '<div class="prof-item"><h3>' + p.name + '</h3><div class="code">Код: ' + p.code + '</div></div>'
+            ).join('');
+        }).catch(()=>{
+            document.getElementById('prof-list').innerHTML = '<p>Список профессий загружается...</p>';
+        });
+        fetch('posts/list.json').then(r=>r.json()).then(posts=>{
+            const list = document.getElementById('news-list');
+            if (posts.length) {
+                list.innerHTML = posts.map(p =>
+                    '<div class="news-item">' +
+                    '<a href="posts/' + p.file + '">' + p.title + '</a><br>' +
+                    '<small>' + p.date + '</small></div>'
+                ).join('');
+            } else { list.innerHTML = '<p>Новости скоро появятся</p>'; }
+        }).catch(()=>{
+            document.getElementById('news-list').innerHTML = '<p>Новости скоро появятся</p>';
+        });
+    </script>
+</body>
+</html>
