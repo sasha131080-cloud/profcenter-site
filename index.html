@@ -110,11 +110,13 @@
         fetch('posts/list.json').then(r=>r.json()).then(posts=>{
             const list = document.getElementById('news-list');
             if (posts.length) {
-                list.innerHTML = posts.map(p =>
-                    '<div class="news-item">' +
+                list.innerHTML = posts.slice(0, 5).map(p => {
+                    const imgMatch = p.image ? '<img src="' + p.image + '" style="width:100%;max-width:300px;height:auto;border-radius:8px;margin-right:15px;float:left;">' : '';
+                    return '<div class="news-item" style="overflow:hidden;">' +
+                    imgMatch +
                     '<a href="posts/' + p.file + '">' + p.title + '</a><br>' +
-                    '<small>' + p.date + '</small></div>'
-                ).join('');
+                    '<small>' + p.date + '</small></div>';
+                }).join('');
             } else { list.innerHTML = '<p>Новости скоро появятся</p>'; }
         }).catch(()=>{
             document.getElementById('news-list').innerHTML = '<p>Новости скоро появятся</p>';
