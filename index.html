@@ -9,108 +9,121 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.6; background: #f8fafc; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.6; background: #f8fafc; overflow-x: hidden; }
         
         /* Навигация */
-        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); transition: all 0.3s; }
         .nav-logo { font-size: 24px; font-weight: 800; color: #2563eb; }
-        .nav-links a { margin-left: 30px; text-decoration: none; color: #475569; font-weight: 500; transition: color 0.3s; }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #475569; font-weight: 500; transition: color 0.3s; }
         .nav-links a:hover { color: #2563eb; }
         .nav-cta { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; }
         
         /* Герой */
-        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%); color: white; padding: 120px 40px 80px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%); animation: float 6s ease-in-out infinite; }
-        .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%); animation: float 8s ease-in-out infinite reverse; }
-        .hero-content { max-width: 600px; position: relative; z-index: 1; }
-        .hero-badge { display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2); }
-        .hero h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,58,95,0.8) 50%, rgba(37,99,235,0.7) 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 120px 40px 80px; }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 10px 24px; border-radius: 50px; font-size: 14px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.2); color: white; }
+        .hero h1 { font-size: 64px; font-weight: 800; line-height: 1.1; margin-bottom: 25px; color: white; }
         .hero h1 span { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
-        .hero-cta { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 18px; transition: transform 0.3s, box-shadow 0.3s; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,99,235,0.4); }
-        .btn-secondary { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: background 0.3s; }
-        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        .hero p { font-size: 22px; opacity: 0.9; margin-bottom: 35px; color: white; }
+        .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 50px; }
+        .btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 18px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 18px; transition: transform 0.3s, box-shadow 0.3s; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,99,235,0.5); }
+        .btn-secondary { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: white; padding: 18px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: background 0.3s; display: inline-block; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.25); }
         
-        .hero-stats { display: flex; gap: 40px; margin-top: 50px; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 48px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-label { font-size: 14px; opacity: 0.8; }
+        .hero-stats { display: flex; gap: 50px; }
+        .stat-number { font-size: 56px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 16px; opacity: 0.9; color: white; }
         
         /* Секции */
         section { padding: 100px 40px; }
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
-        .section-title p { font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto; }
+        .section-title h2 { font-size: 48px; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
+        .section-title p { font-size: 20px; color: #64748b; max-width: 600px; margin: 0 auto; }
         
         /* Карточки профессий */
-        .prof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
-        .prof-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-        .prof-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #2563eb, #7c3aed); }
-        .prof-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-        .prof-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 15px; }
-        .prof-card .price { font-size: 28px; font-weight: 800; color: #2563eb; margin-bottom: 10px; }
-        .prof-card .duration { display: inline-block; background: #f1f5f9; padding: 6px 12px; border-radius: 20px; font-size: 14px; color: #64748b; margin-bottom: 15px; }
-        .prof-card .salary { color: #10b981; font-weight: 600; }
+        .prof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .prof-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 30px rgba(0,0,0,0.08); transition: transform 0.4s, box-shadow 0.4s; position: relative; }
+        .prof-card:hover { transform: translateY(-12px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .prof-card-img { width: 100%; height: 200px; object-fit: cover; }
+        .prof-card-content { padding: 25px; }
+        .prof-card h3 { font-size: 22px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .prof-card .price { font-size: 32px; font-weight: 800; color: #2563eb; margin-bottom: 10px; }
+        .prof-card .duration { display: inline-block; background: #f1f5f9; padding: 8px 16px; border-radius: 20px; font-size: 14px; color: #64748b; margin-bottom: 15px; }
+        .prof-card .salary { color: #10b981; font-weight: 600; font-size: 16px; }
+        .prof-card-btn { display: block; text-align: center; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 14px; text-decoration: none; font-weight: 600; border-radius: 0 0 24px 24px; transition: opacity 0.3s; }
+        .prof-card-btn:hover { opacity: 0.9; }
         
         /* Преимущества */
-        .benefits { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); color: white; }
-        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .benefit-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; }
-        .benefit-icon { font-size: 48px; margin-bottom: 20px; }
-        .benefit-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
-        .benefit-card p { opacity: 0.8; font-size: 14px; }
+        .benefits { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); color: white; position: relative; overflow: hidden; }
+        .benefits::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .benefit-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 35px; text-align: center; transition: transform 0.3s, background 0.3s; }
+        .benefit-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+        .benefit-icon { font-size: 56px; margin-bottom: 20px; }
+        .benefit-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .benefit-card p { opacity: 0.8; font-size: 16px; }
         
         /* Отзывы */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
-        .review-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .review-stars { color: #fbbf24; font-size: 20px; margin-bottom: 15px; }
-        .review-text { font-style: italic; color: #475569; margin-bottom: 20px; line-height: 1.8; }
+        .reviews-section { background: #f1f5f9; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .review-card { background: white; border-radius: 24px; padding: 35px; box-shadow: 0 4px 30px rgba(0,0,0,0.08); transition: transform 0.3s; }
+        .review-card:hover { transform: translateY(-5px); }
+        .review-stars { color: #fbbf24; font-size: 24px; margin-bottom: 15px; }
+        .review-text { font-style: italic; color: #475569; margin-bottom: 25px; line-height: 1.8; font-size: 16px; }
         .review-author { display: flex; align-items: center; gap: 15px; }
-        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
-        .review-name { font-weight: 600; color: #0f172a; }
+        .review-avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 20px; }
+        .review-name { font-weight: 700; color: #0f172a; font-size: 18px; }
         .review-role { font-size: 14px; color: #64748b; }
         
         /* CTA */
-        .cta-section { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: white; text-align: center; }
-        .cta-section h2 { font-size: 42px; font-weight: 800; margin-bottom: 20px; }
-        .cta-section p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
-        .cta-phone { font-size: 36px; font-weight: 800; color: white; text-decoration: none; }
+        .cta-section { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); }
+        .cta-section h2 { font-size: 48px; font-weight: 800; margin-bottom: 20px; position: relative; z-index: 1; }
+        .cta-section p { font-size: 22px; opacity: 0.9; margin-bottom: 35px; position: relative; z-index: 1; }
+        .cta-phone { font-size: 42px; font-weight: 800; color: white; text-decoration: none; position: relative; z-index: 1; }
         .cta-phone:hover { opacity: 0.9; }
         
         /* Контакты */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .contact-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
-        .contact-icon { font-size: 40px; margin-bottom: 15px; }
-        .contact-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
-        .contact-card p { color: #64748b; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .contact-card { background: white; border-radius: 24px; padding: 40px; box-shadow: 0 4px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; }
+        .contact-card:hover { transform: translateY(-5px); }
+        .contact-icon { font-size: 48px; margin-bottom: 20px; }
+        .contact-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .contact-card p { color: #64748b; font-size: 16px; }
         .contact-card a { color: #2563eb; text-decoration: none; font-weight: 600; }
         
         /* Футер */
-        .footer { background: #0f172a; color: white; padding: 60px 40px 30px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
-        .footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
-        .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.3s; }
+        .footer { background: #0f172a; color: white; padding: 80px 40px 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto 50px; }
+        .footer h4 { font-size: 18px; font-weight: 700; margin-bottom: 25px; }
+        .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 12px; transition: color 0.3s; font-size: 15px; }
         .footer a:hover { color: #60a5fa; }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 14px; }
+        .footer-bottom { text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 14px; }
         
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
-        
+        /* Адаптивность */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 48px; }
+            .stat-number { font-size: 48px; }
+            .hero-stats { gap: 30px; }
+        }
         @media (max-width: 768px) {
             .nav { padding: 15px 20px; }
             .nav-links { display: none; }
-            .hero { padding: 120px 20px 60px; }
+            .hero-content { padding: 100px 20px 60px; }
             .hero h1 { font-size: 36px; }
-            .hero-stats { gap: 20px; }
-            .stat-number { font-size: 36px; }
+            .hero p { font-size: 18px; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .stat-number { font-size: 42px; }
             section { padding: 60px 20px; }
-            .section-title h2 { font-size: 32px; }
+            .section-title h2 { font-size: 36px; }
         }
     </style>
 </head>
 <body>
-    <!-- Навигация -->
     <nav class="nav">
         <div class="nav-logo">ПРОФЦЕНТР</div>
         <div class="nav-links">
@@ -122,8 +135,9 @@
         </div>
     </nav>
 
-    <!-- Герой -->
     <section class="hero">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80" alt="Строительная площадка" class="hero-bg">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-badge">🎓 С 2015 года обучаем рабочим профессиям</div>
             <h1>Получите <span>новую профессию</span> за 2-4 месяца</h1>
@@ -149,7 +163,6 @@
         </div>
     </section>
 
-    <!-- Профессии -->
     <section id="professions">
         <div class="section-title">
             <h2>Популярные профессии</h2>
@@ -157,45 +170,68 @@
         </div>
         <div class="prof-grid">
             <div class="prof-card">
-                <h3>Машинист экскаватора</h3>
-                <div class="price">от 13 000 ₽</div>
-                <div class="duration">2-3 месяца</div>
-                <p class="salary">Зарплата: 80 000 — 120 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1580974928064-f0aeef70895a?w=600&q=80" alt="Машинист экскаватора" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Машинист экскаватора</h3>
+                    <div class="price">от 13 000 ₽</div>
+                    <div class="duration">2-3 месяца</div>
+                    <p class="salary">Зарплата: 80 000 — 120 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
             <div class="prof-card">
-                <h3>Машинист бульдозера</h3>
-                <div class="price">от 13 000 ₽</div>
-                <div class="duration">2-3 месяца</div>
-                <p class="salary">Зарплата: 70 000 — 100 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600&q=80" alt="Машинист бульдозера" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Машинист бульдозера</h3>
+                    <div class="price">от 13 000 ₽</div>
+                    <div class="duration">2-3 месяца</div>
+                    <p class="salary">Зарплата: 70 000 — 100 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
             <div class="prof-card">
-                <h3>Машинист крана</h3>
-                <div class="price">от 14 000 ₽</div>
-                <div class="duration">2-3 месяца</div>
-                <p class="salary">Зарплата: 90 000 — 130 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&q=80" alt="Машинист крана" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Машинист крана</h3>
+                    <div class="price">от 14 000 ₽</div>
+                    <div class="duration">2-3 месяца</div>
+                    <p class="salary">Зарплата: 90 000 — 130 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
             <div class="prof-card">
-                <h3>Водитель погрузчика</h3>
-                <div class="price">от 13 000 ₽</div>
-                <div class="duration">1-2 месяца</div>
-                <p class="salary">Зарплата: 60 000 — 90 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80" alt="Водитель погрузчика" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Водитель погрузчика</h3>
+                    <div class="price">от 13 000 ₽</div>
+                    <div class="duration">1-2 месяца</div>
+                    <p class="salary">Зарплата: 60 000 — 90 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
             <div class="prof-card">
-                <h3>Лаборант хим. анализа</h3>
-                <div class="price">от 15 000 ₽</div>
-                <div class="duration">2-3 месяца</div>
-                <p class="salary">Зарплата: 50 000 — 80 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&q=80" alt="Лаборант" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Лаборант хим. анализа</h3>
+                    <div class="price">от 15 000 ₽</div>
+                    <div class="duration">2-3 месяца</div>
+                    <p class="salary">Зарплата: 50 000 — 80 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
             <div class="prof-card">
-                <h3>Стропальщик</h3>
-                <div class="price">от 5 500 ₽</div>
-                <div class="duration">1-2 месяца</div>
-                <p class="salary">Зарплата: 45 000 — 70 000 ₽</p>
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Стропальщик" class="prof-card-img">
+                <div class="prof-card-content">
+                    <h3>Стропальщик</h3>
+                    <div class="price">от 5 500 ₽</div>
+                    <div class="duration">1-2 месяца</div>
+                    <p class="salary">Зарплата: 45 000 — 70 000 ₽</p>
+                </div>
+                <a href="tel:+73902262765" class="prof-card-btn">Записаться</a>
             </div>
         </div>
     </section>
 
-    <!-- Преимущества -->
     <section class="benefits" id="benefits">
         <div class="section-title">
             <h2>Почему выбирают нас</h2>
@@ -235,8 +271,7 @@
         </div>
     </section>
 
-    <!-- Отзывы -->
-    <section id="reviews">
+    <section class="reviews-section" id="reviews">
         <div class="section-title">
             <h2>Отзывы выпускников</h2>
             <p>Реальные истории наших студентов</p>
@@ -278,14 +313,12 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta-section">
         <h2>Готовы начать?</h2>
         <p>Позвоните сейчас и получите бесплатную консультацию</p>
         <a href="tel:+73902262765" class="cta-phone">+7 (3902) 26-27-65</a>
     </section>
 
-    <!-- Контакты -->
     <section id="contacts">
         <div class="section-title">
             <h2>Контакты</h2>
@@ -316,7 +349,6 @@
         </div>
     </section>
 
-    <!-- Футер -->
     <footer class="footer">
         <div class="footer-grid">
             <div>
