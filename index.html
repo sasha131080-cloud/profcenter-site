@@ -163,6 +163,19 @@
         </div>
     </section>
 
+    <!-- Новости -->
+    <section id="news" style="background:#f1f5f9;">
+        <div class="section-title">
+            <h2>Новости и статьи</h2>
+            <p>Полезные материалы о профессиях и обучении</p>
+        </div>
+        <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:30px;">
+            <div id="posts-list" style="grid-column:1/-1;">
+                <p style="text-align:center;color:#64748b;">Загрузка...</p>
+            </div>
+        </div>
+    </section>
+
     <section id="professions">
         <div class="section-title">
             <h2>Популярные профессии</h2>
@@ -379,5 +392,23 @@
             <p>© 2026 СП «ПРОФЦЕНТР» ООО «КВАНТ+». Все права защищены.</p>
         </div>
     </footer>
+    
+    <script>
+        // Загрузка постов
+        fetch('posts/list.json').then(r=>r.json()).then(posts=>{
+            const list = document.getElementById('posts-list');
+            if (posts.length) {
+                list.innerHTML = posts.slice(0, 6).map(p => {
+                    const imgMatch = p.image ? '<img src="' + p.image + '?v=3" style="width:100%;max-width:300px;height:auto;border-radius:12px;margin-right:15px;float:left;">' : '';
+                    return '<div style="background:white;border-radius:16px;padding:25px;box-shadow:0 4px 20px rgba(0,0,0,0.05);margin-bottom:20px;overflow:hidden;">' +
+                    imgMatch +
+                    '<h3 style="margin:0 0 10px;"><a href="posts/' + p.file + '" style="color:#0f172a;text-decoration:none;font-size:20px;">' + p.title + '</a></h3>' +
+                    '<small style="color:#64748b;">' + p.date + '</small></div>';
+                }).join('');
+            } else { list.innerHTML = '<p style="text-align:center;color:#64748b;">Новости скоро появятся</p>'; }
+        }).catch(()=>{
+            document.getElementById('posts-list').innerHTML = '<p style="text-align:center;color:#64748b;">Новости скоро появятся</p>';
+        });
+    </script>
 </body>
 </html>
