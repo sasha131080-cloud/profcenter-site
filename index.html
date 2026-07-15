@@ -41,6 +41,10 @@
     <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-XXXXXXXXXX');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.6; background: #f8fafc; overflow-x: hidden; }
@@ -366,6 +370,17 @@
         <a href="tel:+73902262765" class="cta-phone">+7 (3902) 26-27-65</a>
     </section>
 
+    <!-- Подписка -->
+    <section style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:white;padding:80px 40px;text-align:center;">
+        <h2 style="font-size:36px;font-weight:800;margin-bottom:15px;">Подпишитесь на новости</h2>
+        <p style="font-size:18px;opacity:0.9;margin-bottom:30px;">Получайте информацию о новых программах, скидках и мероприятиях</p>
+        <div style="max-width:500px;margin:0 auto;display:flex;gap:10px;">
+            <input type="email" id="sub-email" placeholder="Ваш email" style="flex:1;padding:15px;border:none;border-radius:50px;font-size:16px;">
+            <button onclick="subscribe()" style="background:#ff9800;color:white;padding:15px 30px;border:none;border-radius:50px;font-weight:600;cursor:pointer;">Подписаться</button>
+        </div>
+        <p id="sub-result" style="margin-top:15px;font-size:14px;"></p>
+    </section>
+
     <section id="contacts">
         <div class="section-title">
             <h2>Контакты</h2>
@@ -443,6 +458,28 @@
     </footer>
     
     <script>
+        // Регистрация Service Worker для PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('SW registered'))
+                .catch(err => console.log('SW error:', err));
+        }
+        
+        // Подписка
+        function subscribe() {
+            const email = document.getElementById('sub-email').value;
+            if (email && email.includes('@')) {
+                // Сохраняем в localStorage (для демо)
+                let subs = JSON.parse(localStorage.getItem('profcenter_subs') || '[]');
+                subs.push({email: email, date: new Date().toISOString()});
+                localStorage.setItem('profcenter_subs', JSON.stringify(subs));
+                document.getElementById('sub-result').textContent = 'Спасибо за подписку! Мы отправим вам письмо.';
+                document.getElementById('sub-email').value = '';
+            } else {
+                document.getElementById('sub-result').textContent = 'Введите корректный email';
+            }
+        }
+        
         // Загрузка постов
         fetch('posts/list.json').then(r=>r.json()).then(posts=>{
             const list = document.getElementById('posts-list');
