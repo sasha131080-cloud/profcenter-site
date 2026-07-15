@@ -3,334 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обучение рабочим профессиям в Абакане | ПРОФЦЕНТР — Удостоверение за 2 недели</title>
-    <meta name="description" content="Обучение на машиниста, сварщика, стропальщика в Абакане. Удостоверение гос. образца. Стоимость от 5 500 руб. Запись: +7 (3902) 26-27-65">
-    <meta name="keywords" content="обучение Абакан, рабочие профессии, машинист экскаватора, машинист бульдозера, удостоверение, профессиональное обучение">
-    <meta property="og:title" content="ПРОФЦЕНТР — Обучение рабочим профессиям в Абакане">
-    <meta property="og:description" content="Получите новую профессию за 2-4 месяца. Удостоверение гос. образца. Стоимость от 5 500 руб.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sasha131080-cloud.github.io/profcenter-site/">
+    <title>ПРОФЦЕНТР — Обучение рабочим профессиям в Абакане</title>
+    <meta name="description" content="Получите новую профессию за 2-4 месяца. Удостоверение гос. образца. Стоимость от 5 500 руб.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Times New Roman', serif; color: #333; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.6; background: #f8fafc; }
         
-        /* Хедер */
-        .header { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); color: white; padding: 40px 20px; text-align: center; }
-        .header h1 { font-size: 32px; margin-bottom: 15px; animation: fadeInDown 0.8s ease-out; }
-        .header .subtitle { font-size: 18px; opacity: 0.9; margin-bottom: 20px; animation: fadeInUp 0.8s ease-out 0.2s both; }
+        /* Навигация */
+        .nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-logo { font-size: 24px; font-weight: 800; color: #2563eb; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: #475569; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: #2563eb; }
+        .nav-cta { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; }
         
-        /* Триггер-баннер */
-        .trigger-banner { background: #ff5722; color: white; padding: 15px; text-align: center; font-size: 20px; font-weight: bold; animation: pulse 2s infinite; }
-        .trigger-banner span { display: inline-block; animation: bounce 0.5s ease infinite alternate; }
+        /* Герой */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%); color: white; padding: 120px 40px 80px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%); animation: float 6s ease-in-out infinite; }
+        .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%); animation: float 8s ease-in-out infinite reverse; }
+        .hero-content { max-width: 600px; position: relative; z-index: 1; }
+        .hero-badge { display: inline-block; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; font-size: 14px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2); }
+        .hero h1 { font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
+        .hero-cta { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 18px; transition: transform 0.3s, box-shadow 0.3s; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37,99,235,0.4); }
+        .btn-secondary { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); transition: background 0.3s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
         
-        /* Счётчики */
-        .counters { display: flex; justify-content: center; gap: 40px; padding: 30px 20px; background: #f5f5f5; flex-wrap: wrap; }
-        .counter { text-align: center; }
-        .counter .number { font-size: 48px; font-weight: bold; color: #1a237e; }
-        .counter .label { font-size: 14px; color: #666; }
+        .hero-stats { display: flex; gap: 40px; margin-top: 50px; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 48px; font-weight: 800; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 14px; opacity: 0.8; }
         
-        .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+        /* Секции */
+        section { padding: 100px 40px; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
+        .section-title p { font-size: 18px; color: #64748b; max-width: 600px; margin: 0 auto; }
         
-        /* Триггер-блоки */
-        .fear-block { background: #ffebee; border-left: 4px solid #f44336; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .benefit-block { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .urgency-block { background: #fff3e0; border-left: 4px solid #ff9800; padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        /* Карточки профессий */
+        .prof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .prof-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+        .prof-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #2563eb, #7c3aed); }
+        .prof-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+        .prof-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 15px; }
+        .prof-card .price { font-size: 28px; font-weight: 800; color: #2563eb; margin-bottom: 10px; }
+        .prof-card .duration { display: inline-block; background: #f1f5f9; padding: 6px 12px; border-radius: 20px; font-size: 14px; color: #64748b; margin-bottom: 15px; }
+        .prof-card .salary { color: #10b981; font-weight: 600; }
         
-        .phone-block { background: linear-gradient(135deg, #1a237e 0%, #283593 100%); color: white; padding: 30px; border-radius: 8px; text-align: center; margin: 30px 0; animation: glow 2s ease-in-out infinite alternate; }
-        .phone-block a { color: #ffeb3b; text-decoration: none; font-size: 28px; font-weight: bold; }
-        .phone-block .small { font-size: 14px; opacity: 0.8; margin-top: 10px; }
-        
-        .info-bar { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0; }
-        .info-item { background: white; padding: 15px 25px; border-radius: 8px; text-align: center; flex: 1; min-width: 200px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .info-item strong { display: block; font-size: 24px; color: #1a237e; }
-        
-        h2 { color: #1a237e; margin: 30px 0 15px; border-bottom: 2px solid #e8eaf6; padding-bottom: 10px; }
-        
-        /* Профессии */
-        .prof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .prof-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
-        .prof-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-        .prof-card h3 { color: #1a237e; font-size: 18px; margin-bottom: 10px; }
-        .prof-card .price { color: #4caf50; font-size: 24px; font-weight: bold; }
-        .prof-card .duration { color: #666; font-size: 14px; }
+        /* Преимущества */
+        .benefits { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); color: white; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .benefit-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; }
+        .benefit-icon { font-size: 48px; margin-bottom: 20px; }
+        .benefit-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .benefit-card p { opacity: 0.8; font-size: 14px; }
         
         /* Отзывы */
-        .reviews { display: grid; gap: 20px; }
-        .review { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .review .author { font-weight: bold; color: #1a237e; }
-        .review .text { font-style: italic; margin: 10px 0; }
-        .review .stars { color: #ffc107; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto; }
+        .review-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .review-stars { color: #fbbf24; font-size: 20px; margin-bottom: 15px; }
+        .review-text { font-style: italic; color: #475569; margin-bottom: 20px; line-height: 1.8; }
+        .review-author { display: flex; align-items: center; gap: 15px; }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+        .review-name { font-weight: 600; color: #0f172a; }
+        .review-role { font-size: 14px; color: #64748b; }
         
-        /* FAQ */
-        .faq-item { border: 1px solid #ddd; border-radius: 8px; margin: 10px 0; overflow: hidden; }
-        .faq-question { background: #f5f5f5; padding: 15px; cursor: pointer; font-weight: bold; }
-        .faq-answer { padding: 15px; display: none; }
-        .faq-answer.active { display: block; }
+        /* CTA */
+        .cta-section { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: white; text-align: center; }
+        .cta-section h2 { font-size: 42px; font-weight: 800; margin-bottom: 20px; }
+        .cta-section p { font-size: 20px; opacity: 0.9; margin-bottom: 30px; }
+        .cta-phone { font-size: 36px; font-weight: 800; color: white; text-decoration: none; }
+        .cta-phone:hover { opacity: 0.9; }
         
-        /* Форма */
-        .form-block { background: #e8eaf6; padding: 30px; border-radius: 8px; margin: 30px 0; }
-        .form-block input, .form-block button { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
-        .form-block button { background: #1a237e; color: white; border: none; cursor: pointer; font-weight: bold; }
-        .form-block button:hover { background: #283593; }
+        /* Контакты */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .contact-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+        .contact-icon { font-size: 40px; margin-bottom: 15px; }
+        .contact-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+        .contact-card p { color: #64748b; }
+        .contact-card a { color: #2563eb; text-decoration: none; font-weight: 600; }
         
-        .footer { background: #1a237e; color: white; padding: 30px; text-align: center; margin-top: 40px; }
-        .footer a { color: #90caf9; }
-        .footer-links { margin-top: 15px; font-size: 14px; }
-        .footer-links a { color: #90caf9; margin: 0 10px; }
+        /* Футер */
+        .footer { background: #0f172a; color: white; padding: 60px 40px 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+        .footer h4 { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+        .footer a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; transition: color 0.3s; }
+        .footer a:hover { color: #60a5fa; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 14px; }
         
-        /* Анимации */
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-5px); } }
-        @keyframes glow { from { box-shadow: 0 0 20px rgba(26,35,126,0.3); } to { box-shadow: 0 0 30px rgba(26,35,126,0.6); } }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
         
-        @media (max-width: 768px) { 
-            .header h1 { font-size: 24px; }
-            .counter .number { font-size: 36px; }
-            .phone-block a { font-size: 22px; }
+        @media (max-width: 768px) {
+            .nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 120px 20px 60px; }
+            .hero h1 { font-size: 36px; }
+            .hero-stats { gap: 20px; }
+            .stat-number { font-size: 36px; }
+            section { padding: 60px 20px; }
+            .section-title h2 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
-    <!-- ТРИГГЕР-БАННЕР -->
-    <div class="trigger-banner">
-        <span>⚠️ ВНИМАНИЕ!</span> Без удостоверения вас НЕ ДОПУСТЯТ к работе. Штраф до 50 000 руб!
-    </div>
+    <!-- Навигация -->
+    <nav class="nav">
+        <div class="nav-logo">ПРОФЦЕНТР</div>
+        <div class="nav-links">
+            <a href="#professions">Профессии</a>
+            <a href="#benefits">Преимущества</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#contacts">Контакты</a>
+            <a href="tel:+73902262765" class="nav-cta">Позвонить</a>
+        </div>
+    </nav>
 
-    <div class="header">
-        <h1>СП «ПРОФЦЕНТР» ООО «КВАНТ+»</h1>
-        <p class="subtitle">Получите новую профессию за 2-4 месяца и увеличьте зарплату на 40-60%</p>
-    </div>
+    <!-- Герой -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 С 2015 года обучаем рабочим профессиям</div>
+            <h1>Получите <span>новую профессию</span> за 2-4 месяца</h1>
+            <p>Увеличьте зарплату на 40-60%. Удостоверение государственного образца. Помощь в трудоустройстве.</p>
+            <div class="hero-cta">
+                <a href="tel:+73902262765" class="btn-primary">Записаться бесплатно</a>
+                <a href="#professions" class="btn-secondary">Смотреть профессии</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">выпускников</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">лет опыта</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">трудоустройство</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- СЧЁТЧИКИ -->
-    <div class="counters">
-        <div class="counter">
-            <div class="number" id="counter1">0</div>
-            <div class="label">выпускников</div>
+    <!-- Профессии -->
+    <section id="professions">
+        <div class="section-title">
+            <h2>Популярные профессии</h2>
+            <p>Выберите направление и начните карьеру в строительстве</p>
         </div>
-        <div class="counter">
-            <div class="number" id="counter2">0</div>
-            <div class="label">лет на рынке</div>
-        </div>
-        <div class="counter">
-            <div class="number" id="counter3">0</div>
-            <div class="label">% трудоустройства</div>
-        </div>
-        <div class="counter">
-            <div class="number" id="counter4">0</div>
-            <div class="label">профессий</div>
-        </div>
-    </div>
-
-    <div class="container">
-        <!-- ТЕЛЕФОН -->
-        <div class="phone-block">
-            <p>Бесплатная консультация:</p>
-            <a href="tel:+73902262765">+7 (3902) 26-27-65</a>
-            <p class="small">Пн-Пт 09:00-16:00 | г. Абакан, ул. Крылова, 17а корп. 2</p>
-        </div>
-
-        <!-- СТРАХ -->
-        <div class="fear-block">
-            <h3>⚠️ Что будет, если НЕ получить удостоверение?</h3>
-            <ul>
-                <li><strong>Штраф до 50 000 руб.</strong> за работу без документов (ст. 9.19 КоАП РФ)</li>
-                <li><strong>Увольнение</strong> — работодатель вправе уволить немедленно</li>
-                <li><strong>Ответственность за аварию</strong> — без удостоверения вся ответственность на вас</li>
-                <li><strong>Невозможность трудоустройства</strong> — 95% работодателей требуют документы</li>
-            </ul>
-        </div>
-
-        <!-- ПРОИЗВОДСТВА -->
-        <h2>Наши преимущества</h2>
-        <div class="benefit-block">
-            <h3>✅ Почему выбирают ПРОФЦЕНТР?</h3>
-            <ul>
-                <li><strong>Удостоверение за 2 недели</strong> — самый быстрый срок в Абакане</li>
-                <li><strong>Стоимость от 5 500 руб.</strong> — доступные цены для каждого</li>
-                <li><strong>Постоянные скидки до 15%</strong> — экономия до 2 000 руб.</li>
-                <li><strong>Дистанционное обучение</strong> — учиться можно из дома</li>
-                <li><strong>Помощь в трудоустройстве</strong> — мы помогаем найти работу</li>
-                <li><strong>Диплом государственного образца</strong> — признаётся везде</li>
-            </ul>
-        </div>
-
-        <!-- СРОЧНОСТЬ -->
-        <div class="urgency-block">
-            <h3>⏰ Специальное предложение!</h3>
-            <p><strong>Только до конца июля:</strong> скидка 15% на все программы обучения!</p>
-            <p>Количество мест ограничено. Запишитесь прямо сейчас!</p>
-        </div>
-
-        <!-- ПРОФЕССИИ -->
-        <h2>Популярные профессии</h2>
         <div class="prof-grid">
             <div class="prof-card">
                 <h3>Машинист экскаватора</h3>
-                <div class="price">от 13 000 руб.</div>
-                <div class="duration">Срок: 2-3 месяца</div>
-                <p>Зарплата в Абакане: 80 000 - 120 000 руб./мес.</p>
+                <div class="price">от 13 000 ₽</div>
+                <div class="duration">2-3 месяца</div>
+                <p class="salary">Зарплата: 80 000 — 120 000 ₽</p>
             </div>
             <div class="prof-card">
                 <h3>Машинист бульдозера</h3>
-                <div class="price">от 13 000 руб.</div>
-                <div class="duration">Срок: 2-3 месяца</div>
-                <p>Зарплата в Абакане: 70 000 - 100 000 руб./мес.</p>
+                <div class="price">от 13 000 ₽</div>
+                <div class="duration">2-3 месяца</div>
+                <p class="salary">Зарплата: 70 000 — 100 000 ₽</p>
             </div>
             <div class="prof-card">
                 <h3>Машинист крана</h3>
-                <div class="price">от 14 000 руб.</div>
-                <div class="duration">Срок: 2-3 месяца</div>
-                <p>Зарплата в Абакане: 90 000 - 130 000 руб./мес.</p>
+                <div class="price">от 14 000 ₽</div>
+                <div class="duration">2-3 месяца</div>
+                <p class="salary">Зарплата: 90 000 — 130 000 ₽</p>
             </div>
             <div class="prof-card">
                 <h3>Водитель погрузчика</h3>
-                <div class="price">от 13 000 руб.</div>
-                <div class="duration">Срок: 1-2 месяца</div>
-                <p>Зарплата в Абакане: 60 000 - 90 000 руб./мес.</p>
+                <div class="price">от 13 000 ₽</div>
+                <div class="duration">1-2 месяца</div>
+                <p class="salary">Зарплата: 60 000 — 90 000 ₽</p>
             </div>
             <div class="prof-card">
                 <h3>Лаборант хим. анализа</h3>
-                <div class="price">от 15 000 руб.</div>
-                <div class="duration">Срок: 2-3 месяца</div>
-                <p>Зарплата в Абакане: 50 000 - 80 000 руб./мес.</p>
+                <div class="price">от 15 000 ₽</div>
+                <div class="duration">2-3 месяца</div>
+                <p class="salary">Зарплата: 50 000 — 80 000 ₽</p>
             </div>
             <div class="prof-card">
                 <h3>Стропальщик</h3>
-                <div class="price">от 5 500 руб.</div>
-                <div class="duration">Срок: 1-2 месяца</div>
-                <p>Зарплата в Абакане: 45 000 - 70 000 руб./мес.</p>
+                <div class="price">от 5 500 ₽</div>
+                <div class="duration">1-2 месяца</div>
+                <p class="salary">Зарплата: 45 000 — 70 000 ₽</p>
             </div>
         </div>
+    </section>
 
-        <!-- ОТЗЫВЫ -->
-        <h2>Отзывы выпускников</h2>
-        <div class="reviews">
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="author">Иван К., машинист экскаватора</div>
-                <div class="text">"Прошёл обучение за 2 месяца. Сейчас работаю на стройке, зарплата 95 000 руб. До этого работал на заводе за 35 000. Обучение окупилось за первый месяц!"</div>
+    <!-- Преимущества -->
+    <section class="benefits" id="benefits">
+        <div class="section-title">
+            <h2>Почему выбирают нас</h2>
+            <p>Мы делаем обучение доступным и удобным</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Быстрое обучение</h3>
+                <p>Получите профессию за 2-4 месяца</p>
             </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="author">Анна М., лаборант хим. анализа</div>
-                <div class="text">"Дистанционное обучение — это спасение! Училась из дома, не отрываясь от семьи. Удостоверение получила через 3 недели. Рекомендую всем!"</div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎓</div>
+                <h3>Диплом гос. образца</h3>
+                <p>Удостоверение действительно по всей России</p>
             </div>
-            <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="author">Сергей П., машинист бульдозера</div>
-                <div class="text">"Сомневался, стоит ли учиться в 45 лет. Оказалось — лучшее решение в жизни! Зарплата выросла в 2 раза. Спасибо ПРОФЦЕНТР!"</div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Доступные цены</h3>
+                <p>От 5 500 руб. + скидки до 15%</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🏠</div>
+                <h3>Дистанционно</h3>
+                <p>Учитесь из дома, практика — на объектах</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💼</div>
+                <h3>Трудоустройство</h3>
+                <p>Помогаем найти работу после обучения</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📋</div>
+                <h3>Без экзаменов</h3>
+                <p>Записывайтесь без вступительных испытаний</p>
             </div>
         </div>
+    </section>
 
-        <!-- FAQ -->
-        <h2>Часто задаваемые вопросы</h2>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Можно ли учиться без отрыва от работы?</div>
-            <div class="faq-answer">Да! Форма обучения очно-заочная с применением дистанционных технологий. Теорию проходите онлайн в удобное время, практику — по согласованию.</div>
+    <!-- Отзывы -->
+    <section id="reviews">
+        <div class="section-title">
+            <h2>Отзывы выпускников</h2>
+            <p>Реальные истории наших студентов</p>
         </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Какие документы нужны для поступления?</div>
-            <div class="faq-answer">Паспорт, документ об образовании, медицинская справка формы 003-В/у, фото 3x4 (2 шт). Для некоторых профессий нужна справка об отсутствии судимости.</div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"Прошёл обучение на машиниста экскаватора за 2 месяца. Сейчас работаю, зарплата 95 000 руб. До этого работал за 35 000. Обучение окупилось за первый месяц!"</div>
+                <div class="review-author">
+                    <div class="review-avatar">ИК</div>
+                    <div>
+                        <div class="review-name">Иван К.</div>
+                        <div class="review-role">Машинист экскаватора</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"Дистанционное обучение — это спасение! Училась из дома, не отрываясь от семьи. Удостоверение получила через 3 недели. Рекомендую всем!"</div>
+                <div class="review-author">
+                    <div class="review-avatar">АМ</div>
+                    <div>
+                        <div class="review-name">Анна М.</div>
+                        <div class="review-role">Лаборант хим. анализа</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-text">"Сомневался, стоит ли учиться в 45 лет. Оказалось — лучшее решение в жизни! Зарплата выросла в 2 раза. Спасибо ПРОФЦЕНТР!"</div>
+                <div class="review-author">
+                    <div class="review-avatar">СП</div>
+                    <div>
+                        <div class="review-name">Сергей П.</div>
+                        <div class="review-role">Машинист бульдозера</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Сколько стоит обучение?</div>
-            <div class="faq-answer">Стоимость от 5 500 до 15 000 руб. в зависимости от профессии. Действуют постоянные скидки до 15%. Рассрочка не предоставляется.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Действует ли удостоверение по всей России?</div>
-            <div class="faq-answer">Да! Удостоверение государственного образца действительно по всей территории Российской Федерации.</div>
-        </div>
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">Помогаете ли вы с трудоустройством?</div>
-            <div class="faq-answer">Да! Мы сотрудничаем с ведущими строительными компаниями Абакана и Хакасии. Более 80% наших выпускников трудоустраиваются по специальности.</div>
-        </div>
+    </section>
 
-        <!-- ФОРМА -->
-        <div class="form-block">
-            <h2>Запишитесь на бесплатную консультацию!</h2>
-            <p>Оставьте заявку и получите подробную информацию о обучении</p>
-            <input type="text" placeholder="Ваше имя" id="name">
-            <input type="tel" placeholder="Ваш телефон" id="phone">
-            <button onclick="submitForm()">Записаться БЕСПЛАТНО</button>
-            <p style="font-size:12px;color:#666;margin-top:10px;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
-        </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Готовы начать?</h2>
+        <p>Позвоните сейчас и получите бесплатную консультацию</p>
+        <a href="tel:+73902262765" class="cta-phone">+7 (3902) 26-27-65</a>
+    </section>
 
-        <!-- КОНТАКТЫ -->
-        <h2>Контакты</h2>
-        <div class="grid-2">
+    <!-- Контакты -->
+    <section id="contacts">
+        <div class="section-title">
+            <h2>Контакты</h2>
+            <p>Свяжитесь с нами любым удобным способом</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3>Телефон</h3>
+                <p><a href="tel:+73902262765">+7 (3902) 26-27-65</a></p>
+                <p><a href="tel:+79083262765">+7 908 326-27-65</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Адрес</h3>
+                <p>г. Абакан, ул. Крылова, 17а корп. 2, каб. 22</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">⏰</div>
+                <h3>Режим работы</h3>
+                <p>Пн-Пт: 09:00 — 16:00</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email</h3>
+                <p><a href="mailto:kbantplus@gmail.com">kbantplus@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-grid">
             <div>
-                <p><strong>Полное наименование:</strong> СП «ПРОФЦЕНТР» ООО «КВАНТ+»</p>
-                <p><strong>Руководитель:</strong> Коробкова М.А.</p>
-                <p><strong>Директор:</strong> Синицин А.Н.</p>
-                <p><strong>Адрес:</strong> г. Абакан, ул. Крылова, 17а корп. 2, каб. 22</p>
-                <p><strong>Телефон:</strong> <a href="tel:+73902262765">+7 (3902) 26-27-65</a></p>
-                <p><strong>Email:</strong> kbantplus@gmail.com</p>
+                <h4>ПРОФЦЕНТР</h4>
+                <p style="color:#94a3b8;">Обучение рабочим профессиям в Абакане с 2015 года.</p>
             </div>
             <div>
-                <p><strong>Виды обучения:</strong></p>
-                <p>• Профессиональная подготовка</p>
-                <p>• Профессиональная переподготовка</p>
-                <p>• Повышение квалификации</p>
-                <p><strong>Форма обучения:</strong> очно-заочная с ДОТ</p>
-                <p><strong>Режим работы:</strong> Пн-Пт 09:00-16:00</p>
+                <h4>Навигация</h4>
+                <a href="#professions">Профессии</a>
+                <a href="#benefits">Преимущества</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contacts">Контакты</a>
+            </div>
+            <div>
+                <h4>Документы</h4>
+                <a href="legal/information.html">Сведения об организации</a>
+                <a href="legal/privacy.html">Политика конфиденциальности</a>
+                <a href="legal/terms.html">Пользовательское соглашение</a>
+            </div>
+            <div>
+                <h4>Контакты</h4>
+                <a href="tel:+73902262765">+7 (3902) 26-27-65</a>
+                <a href="mailto:kbantplus@gmail.com">kbantplus@gmail.com</a>
+                <a href="https://vk.com/profcentrabakan">ВКонтакте</a>
             </div>
         </div>
-    </div>
-
-    <div class="footer">
-        <p>СП «ПРОФЦЕНТР» (ООО «КВАНТ+») | г. Абакан, 2026</p>
-        <p>Тел: <a href="tel:+73902262765">+7 (3902) 26-27-65</a> | Email: kbantplus@gmail.com</p>
-        <div class="footer-links">
-            <a href="legal/privacy.html">Политика конфиденциальности</a>
-            <a href="legal/terms.html">Пользовательское соглашение</a>
-            <a href="legal/information.html">Сведения об организации</a>
+        <div class="footer-bottom">
+            <p>© 2026 СП «ПРОФЦЕНТР» ООО «КВАНТ+». Все права защищены.</p>
         </div>
-        <p style="margin-top:15px;font-size:12px;opacity:0.7;">
-            Материалы носят информационный характер. При использовании материалов ссылка на источник обязательна.
-        </p>
-    </div>
-
-    <script>
-        // Счётчики
-        function animateCounter(id, target) {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                document.getElementById(id).textContent = Math.floor(current);
-            }, 30);
-        }
-        
-        window.onload = function() {
-            setTimeout(() => animateCounter('counter1', 500), 500);
-            setTimeout(() => animateCounter('counter2', 10), 700);
-            setTimeout(() => animateCounter('counter3', 97), 900);
-            setTimeout(() => animateCounter('counter4', 14), 1100);
-        };
-        
-        // FAQ
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            answer.classList.toggle('active');
-        }
-        
-        // Форма
-        function submitForm() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            if (name && phone) {
-                alert('Спасибо! Мы перезвоним вам в течение 15 минут!');
-                // Отправка на сервер
-            } else {
-                alert('Пожалуйста, заполните все поля!');
-            }
-        }
-    </script>
+    </footer>
 </body>
 </html>
